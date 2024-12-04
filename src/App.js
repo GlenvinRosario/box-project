@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from 'react'
+import Box from './components/Box'
+import backGroundImageStored from './components/background.avif'
+const App = () => {
+  const totalBoxes = 5;
+  const [coloredBoxesCount, setColoredBoxesCount] = React.useState(0);
+  const style = {
+    backgroundImage  : `url(${backGroundImageStored})`,
+    textAlign:'center'   ,
+    minHeight:'100vh',
+    backgroundSize: 'cover', 
+    backgroundRepeat: 'no-repeat', 
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={style}>
+      {[...Array(5)].map((_, index) => (
+        <Box key={index} height="200px" width="200px" totalBoxes={totalBoxes} coloredBoxesCount={coloredBoxesCount} setColoredBoxesCount ={setColoredBoxesCount} color='white'/>
+      ))}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
